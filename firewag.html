@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firewag - Web Automation Services</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            red: '#FF1E00',
+                            orange: '#FF6B00',
+                            purple: '#7928CA',
+                            dark: '#0B0F19',
+                            card: '#151C2C',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Firewag Gradient Text */
+        .firewag-gradient-text {
+            background: linear-gradient(135deg, #FF0000 0%, #FF6B00 40%, #D90077 75%, #6B00D7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Gradient Button Background */
+        .firewag-gradient-btn {
+            background: linear-gradient(135deg, #FF2E00 0%, #FF6B00 50%, #8A2BE2 100%);
+            transition: all 0.3s ease;
+        }
+
+        .firewag-gradient-btn:hover {
+            opacity: 0.92;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(255, 107, 0, 0.4);
+        }
+
+        /* Glassmorphism card styling */
+        .glass-card {
+            background: rgba(21, 28, 44, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(255, 107, 0, 0.4);
+        }
+    </style>
+</head>
+<body class="bg-[#0B0F19] text-gray-100 font-sans antialiased min-h-screen flex flex-col justify-between">
+
+    <!-- HEADER / NAVIGATION -->
+    <header class="fixed top-0 left-0 w-full z-50 bg-[#0B0F19]/90 backdrop-blur-md border-b border-gray-800/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Logo Displaying Gradient SVG styling mimicking uploaded logo -->
+                <a href="#home" class="flex items-center gap-2 group">
+                    <span class="text-3xl sm:text-4xl font-extrabold italic tracking-tight firewag-gradient-text group-hover:scale-105 transition-transform duration-300">
+                        Firewag
+                    </span>
+                </a>
+
+                <!-- Desktop Navigation Menu -->
+                <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                    <a href="#home" class="text-gray-300 hover:text-orange-400 transition-colors">Home</a>
+                    <a href="#about" class="text-gray-300 hover:text-orange-400 transition-colors">About Us</a>
+                    <a href="#solutions" class="text-gray-300 hover:text-orange-400 transition-colors">Solutions</a>
+                    <a href="#why-us" class="text-gray-300 hover:text-orange-400 transition-colors">Why Us</a>
+                    <a href="#contact" class="text-gray-300 hover:text-orange-400 transition-colors">Contact Us</a>
+                </nav>
+
+                <!-- Action Button in Header -->
+                <div class="hidden md:block">
+                    <a href="#contact" onclick="preselectService('General Enquiry')" class="firewag-gradient-btn text-white px-5 py-2.5 rounded-full font-semibold text-sm shadow-lg inline-flex items-center gap-2">
+                        <span>Get Started</span>
+                        <i class="fa-solid font-xs fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Toggle Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-400 hover:text-white focus:outline-none p-2">
+                        <i class="fa-solid fa-bars text-2xl" id="menu-icon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-[#121826] border-b border-gray-800 px-4 pt-2 pb-6 space-y-3">
+            <a href="#home" class="mobile-link block py-2 text-gray-300 hover:text-orange-400 font-medium">Home</a>
+            <a href="#about" class="mobile-link block py-2 text-gray-300 hover:text-orange-400 font-medium">About Us</a>
+            <a href="#solutions" class="mobile-link block py-2 text-gray-300 hover:text-orange-400 font-medium">Solutions</a>
+            <a href="#why-us" class="mobile-link block py-2 text-gray-300 hover:text-orange-400 font-medium">Why Us</a>
+            <a href="#contact" class="mobile-link block py-2 text-gray-300 hover:text-orange-400 font-medium">Contact Us</a>
+            <a href="#contact" onclick="preselectService('General Enquiry')" class="firewag-gradient-btn block text-center text-white py-3 rounded-xl font-semibold mt-4">
+                Enquire Now
+            </a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="pt-32 pb-20 md:pt-44 md:pb-32 relative overflow-hidden">
+        <!-- Subtle Glow Background Effects -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-orange-600/15 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute top-1/3 right-10 w-80 h-80 bg-purple-600/15 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gray-800/80 border border-gray-700/60 mb-8 text-xs sm:text-sm font-medium text-orange-400">
+                <i class="fa-solid fa-bolt"></i>
+                <span>Next-Gen Web Automation Platform</span>
+            </div>
+            
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white mb-6 leading-tight">
+                Automate Your Work.<br>
+                <span class="firewag-gradient-text">Save Time. Grow Faster.</span>
+            </h1>
+
+            <p class="max-w-3xl mx-auto text-lg sm:text-xl text-gray-300 mb-10 leading-relaxed font-normal">
+                Professional Web Automation Solutions tailored to elevate your business efficiency, eliminate tedious repetitive tasks, and scale operations effortlessly.
+            </p>
+
+            <div class="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6">
+                <a href="#contact" onclick="preselectService('General Enquiry')" class="firewag-gradient-btn text-white px-8 py-4 rounded-xl font-bold text-lg shadow-xl inline-flex items-center justify-center gap-3">
+                    <span>Get in Touch / Enquiry</span>
+                    <i class="fa-solid fa-paper-plane"></i>
+                </a>
+                <a href="#solutions" class="px-8 py-4 rounded-xl font-semibold text-lg bg-gray-800 hover:bg-gray-700 text-gray-200 border border-gray-700 transition-all inline-flex items-center justify-center gap-2">
+                    <span>Explore Solutions</span>
+                    <i class="fa-solid fa-chevron-down text-sm"></i>
+                </a>
+            </div>
+
+            <!-- Highlights Banner -->
+            <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto text-center border-t border-gray-800/80 pt-10">
+                <div class="p-4">
+                    <h3 class="text-2xl sm:text-3xl font-bold text-white">100%</h3>
+                    <p class="text-xs sm:text-sm text-gray-400 mt-1">Accuracy & Precision</p>
+                </div>
+                <div class="p-4">
+                    <h3 class="text-2xl sm:text-3xl font-bold text-white">10x</h3>
+                    <p class="text-xs sm:text-sm text-gray-400 mt-1">Faster Execution</p>
+                </div>
+                <div class="p-4">
+                    <h3 class="text-2xl sm:text-3xl font-bold text-white">24/7</h3>
+                    <p class="text-xs sm:text-sm text-gray-400 mt-1">Automated Operations</p>
+                </div>
+                <div class="p-4">
+                    <h3 class="text-2xl sm:text-3xl font-bold text-white">Zero</h3>
+                    <p class="text-xs sm:text-sm text-gray-400 mt-1">Manual Effort</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT US SECTION -->
+    <section id="about" class="py-20 bg-[#0E1422] border-y border-gray-800/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                
+                <div>
+                    <div class="inline-block px-3 py-1 bg-orange-500/10 border border-orange-500/20 text-orange-400 rounded-lg text-xs font-semibold tracking-wider uppercase mb-4">
+                        About Firewag
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-6">
+                        Empowering Businesses with Intelligent Automation
+                    </h2>
+                    <p class="text-gray-300 text-base sm:text-lg mb-6 leading-relaxed">
+                        At <strong class="text-white">Firewag</strong>, we specialize in building custom, high-speed web automation bots and workflow pipelines designed to remove operational bottlenecks.
+                    </p>
+                    <p class="text-gray-400 text-base mb-8 leading-relaxed">
+                        Whether you need browser automation, data extraction, seamless API integrations, or large-scale data entry processing, our engineered automation systems allow you to focus on strategic growth while bots handle repetitive daily operations with pinpoint accuracy.
+                    </p>
+
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-3">
+                            <div class="p-2 rounded-lg bg-orange-500/10 text-orange-400 mt-1">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold">Custom Tailored Workflows</h4>
+                                <p class="text-gray-400 text-sm">Scripts and tools crafted precisely to your specific business logic.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="p-2 rounded-lg bg-purple-500/10 text-purple-400 mt-1">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold">Scalable & Secure Architecture</h4>
+                                <p class="text-gray-400 text-sm">Built to handle high data volumes with robust error recovery.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Graphic Banner Box -->
+                <div class="relative">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-orange-600 to-purple-600 rounded-2xl blur-lg opacity-30"></div>
+                    <div class="relative bg-[#151C2C] p-8 sm:p-10 rounded-2xl border border-gray-700/60 shadow-2xl">
+                        <div class="text-center space-y-6">
+                            <div class="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-tr from-orange-500 to-purple-600 text-white text-3xl shadow-lg">
+                                <i class="fa-solid fa-robot"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white">Firewag Automation Engine</h3>
+                            <p class="text-gray-300 text-sm leading-relaxed">
+                                Transform hours of manual clicking and data copying into instant background processing.
+                            </p>
+                            <div class="pt-4 border-t border-gray-700/50 flex justify-center items-center gap-6 text-sm text-gray-400">
+                                <div class="flex items-center gap-2">
+                                    <i class="fa-solid fa-globe text-orange-400"></i>
+                                    <span>www.firewag.com</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <i class="fa-solid fa-phone text-purple-400"></i>
+                                    <span>+91 9408589075</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SOLUTIONS / SERVICES SECTION -->
+    <section id="solutions" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="inline-block px-3 py-1 bg-purple-500/10 border border-purple-500/20 text-purple-400 rounded-lg text-xs font-semibold tracking-wider uppercase mb-3">
+                    What We Do
+                </div>
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-white mb-4">
+                    WEB AUTOMATION SERVICES
+                </h2>
+                <p class="text-gray-400 text-base sm:text-lg">
+                    Comprehensive automation end-to-end solutions engineered to save valuable hours and boost output.
+                </p>
+            </div>
+
+            <!-- Service Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+                <!-- 1. Web Application Automation -->
+                <div class="glass-card p-6 rounded-2xl transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1">
+                    <div>
+                        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-orange-500/20 to-red-500/20 border border-orange-500/30 flex items-center justify-center text-orange-400 text-2xl mb-5 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-laptop-code"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Web Application Automation</h3>
+                        <p class="text-gray-400 text-sm mb-6 leading-relaxed">
+                            Automate complex web app workflows, web forms interaction, status monitoring, and operational actions.
+                        </p>
+                    </div>
+                    <a href="#contact" onclick="preselectService('Web Application Automation')" class="text-xs font-semibold text-orange-400 hover:text-orange-300 flex items-center gap-2 group-hover:underline">
+                        <span>Enquire Now</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- 2. Browser Automation -->
+                <div class="glass-card p-6 rounded-2xl transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1">
+                    <div>
+                        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-orange-500/20 to-amber-500/20 border border-orange-500/30 flex items-center justify-center text-amber-400 text-2xl mb-5 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-window-restore"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Browser Automation</h3>
+                        <p class="text-gray-400 text-sm mb-6 leading-relaxed">
+                            Custom scripts mimicking human browsing actions, automated sign-ins, file downloads, and click sequences.
+                        </p>
+                    </div>
+                    <a href="#contact" onclick="preselectService('Browser Automation')" class="text-xs font-semibold text-amber-400 hover:text-amber-300 flex items-center gap-2 group-hover:underline">
+                        <span>Enquire Now</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- 3. Data Entry Automation -->
+                <div class="glass-card p-6 rounded-2xl transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1">
+                    <div>
+                        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-purple-500/20 to-indigo-500/20 border border-purple-500/30 flex items-center justify-center text-indigo-400 text-2xl mb-5 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-keyboard"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Data Entry Automation</h3>
+                        <p class="text-gray-400 text-sm mb-6 leading-relaxed">
+                            Seamlessly populate forms, spreadsheets, and databases without manual errors or repetitive typing.
+                        </p>
+                    </div>
+                    <a href="#contact" onclick="preselectService('Data Entry Automation')" class="text-xs font-semibold text-indigo-400 hover:text-indigo-300 flex items-center gap-2 group-hover:underline">
+                        <span>Enquire Now</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- 4. Web Scraping & Data Extraction -->
+                <div class="glass-card p-6 rounded-2xl transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1">
+                    <div>
+                        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-pink-500/20 to-purple-500/20 border border-pink-500/30 flex items-center justify-center text-pink-400 text-2xl mb-5 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-filter font-bold"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Web Scraping & Extraction</h3>
+                        <p class="text-gray-400 text-sm mb-6 leading-relaxed">
+                            Extract structured market data, pricing, leads, and product details from web pages cleanly into CSV/Excel.
+                        </p>
+                    </div>
+                    <a href="#contact" onclick="preselectService('Web Scraping & Data Extraction')" class="text-xs font-semibold text-pink-400 hover:text-pink-300 flex items-center gap-2 group-hover:underline">
+                        <span>Enquire Now</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- 5. API Automation -->
+                <div class="glass-card p-6 rounded-2xl transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1">
+                    <div>
+                        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500/20 to-cyan-500/20 border border-blue-500/30 flex items-center justify-center text-cyan-400 text-2xl mb-5 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-network-wired"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">API Automation</h3>
+                        <p class="text-gray-400 text-sm mb-6 leading-relaxed">
+                            Connect multiple applications together using REST APIs for seamless real-time data sync.
+                        </p>
+                    </div>
+                    <a href="#contact" onclick="preselectService('API Automation')" class="text-xs font-semibold text-cyan-400 hover:text-cyan-300 flex items-center gap-2 group-hover:underline">
+                        <span>Enquire Now</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- 6. Business Process Automation -->
+                <div class="glass-card p-6 rounded-2xl transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1">
+                    <div>
+                        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-emerald-500/20 to-teal-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400 text-2xl mb-5 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-diagram-project"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Business Process Automation</h3>
+                        <p class="text-gray-400 text-sm mb-6 leading-relaxed">
+                            End-to-end automation of core back-office routines, approval flows, and client notification loops.
+                        </p>
+                    </div>
+                    <a href="#contact" onclick="preselectService('Business Process Automation')" class="text-xs font-semibold text-emerald-400 hover:text-emerald-300 flex items-center gap-2 group-hover:underline">
+                        <span>Enquire Now</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- 7. Repetitive Task Automation -->
+                <div class="glass-card p-6 rounded-2xl transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1">
+                    <div>
+                        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-purple-500/20 to-violet-500/20 border border-purple-500/30 flex items-center justify-center text-purple-400 text-2xl mb-5 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-arrows-rotate"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Repetitive Task Automation</h3>
+                        <p class="text-gray-400 text-sm mb-6 leading-relaxed">
+                            Replace repetitive daily copy-pasting, report downloads, and manual email sending with single-click bots.
+                        </p>
+                    </div>
+                    <a href="#contact" onclick="preselectService('Repetitive Task Automation')" class="text-xs font-semibold text-purple-400 hover:text-purple-300 flex items-center gap-2 group-hover:underline">
+                        <span>Enquire Now</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- 8. Custom Automation Solutions -->
+                <div class="glass-card p-6 rounded-2xl transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1">
+                    <div>
+                        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-red-500/20 to-orange-500/20 border border-red-500/30 flex items-center justify-center text-red-400 text-2xl mb-5 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-gears"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Custom Automation Solutions</h3>
+                        <p class="text-gray-400 text-sm mb-6 leading-relaxed">
+                            Bespoke software tools and desktop/cloud software built to handle unique, multi-step automation needs.
+                        </p>
+                    </div>
+                    <a href="#contact" onclick="preselectService('Custom Automation Solutions')" class="text-xs font-semibold text-red-400 hover:text-red-300 flex items-center gap-2 group-hover:underline">
+                        <span>Enquire Now</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY US SECTION -->
+    <section id="why-us" class="py-20 bg-[#0E1422] border-y border-gray-800/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="inline-block px-3 py-1 bg-orange-500/10 border border-orange-500/20 text-orange-400 rounded-lg text-xs font-semibold tracking-wider uppercase mb-3">
+                    Why Choose Firewag
+                </div>
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-white mb-4">
+                    Why Work With Us?
+                </h2>
+                <p class="text-gray-400 text-base sm:text-lg">
+                    We deliver reliable, fast, and scalable automation systems designed around your growth goals.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-[#151C2C] p-8 rounded-2xl border border-gray-800 text-center">
+                    <div class="w-12 h-12 rounded-full bg-orange-500/10 text-orange-400 text-xl inline-flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-bullseye"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">High Accuracy</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Eliminate human fatigue and error completely with reliable scripts that process tasks with 100% precision.
+                    </p>
+                </div>
+
+                <div class="bg-[#151C2C] p-8 rounded-2xl border border-gray-800 text-center">
+                    <div class="w-12 h-12 rounded-full bg-purple-500/10 text-purple-400 text-xl inline-flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-clock"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">24/7 Efficiency</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Your automated workflows run continuously around the clock, working while you sleep without stopping.
+                    </p>
+                </div>
+
+                <div class="bg-[#151C2C] p-8 rounded-2xl border border-gray-800 text-center">
+                    <div class="w-12 h-12 rounded-full bg-pink-500/10 text-pink-400 text-xl inline-flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-rocket"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Fast Delivery & Support</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Rapid deployment of custom bots with dedicated maintenance and support to keep your operations smooth.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT & ENQUIRY SECTION -->
+    <section id="contact" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                
+                <!-- Contact Details -->
+                <div class="lg:col-span-5 space-y-8">
+                    <div>
+                        <div class="inline-block px-3 py-1 bg-orange-500/10 border border-orange-500/20 text-orange-400 rounded-lg text-xs font-semibold tracking-wider uppercase mb-3">
+                            Get In Touch
+                        </div>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">
+                            Ready to Automate Your Work?
+                        </h2>
+                        <p class="text-gray-400 text-base leading-relaxed">
+                            Send us your requirements or service enquiry. Clicking "Send Enquiry" will compile your message and open your mail client ready to send directly to <span class="text-white font-medium">Himmat.automated@gmail.com</span>.
+                        </p>
+                    </div>
+
+                    <div class="space-y-6 pt-4">
+                        <!-- Email Item -->
+                        <div class="flex items-center gap-4 p-4 rounded-xl bg-[#151C2C] border border-gray-800">
+                            <div class="w-12 h-12 rounded-xl bg-orange-500/10 text-orange-400 flex items-center justify-center text-xl shrink-0">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-400 uppercase tracking-wider">Email Address</p>
+                                <a href="mailto:Himmat.automated@gmail.com" class="text-white font-semibold hover:text-orange-400 transition-colors text-sm sm:text-base">
+                                    Himmat.automated@gmail.com
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Phone Item -->
+                        <div class="flex items-center gap-4 p-4 rounded-xl bg-[#151C2C] border border-gray-800">
+                            <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center text-xl shrink-0">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-400 uppercase tracking-wider">Contact Number</p>
+                                <a href="tel:+919408589075" class="text-white font-semibold hover:text-purple-400 transition-colors text-sm sm:text-base">
+                                    +91 9408589075
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Website Item -->
+                        <div class="flex items-center gap-4 p-4 rounded-xl bg-[#151C2C] border border-gray-800">
+                            <div class="w-12 h-12 rounded-xl bg-pink-500/10 text-pink-400 flex items-center justify-center text-xl shrink-0">
+                                <i class="fa-solid fa-globe"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-400 uppercase tracking-wider">Website</p>
+                                <a href="http://www.firewag.com" target="_blank" class="text-white font-semibold hover:text-pink-400 transition-colors text-sm sm:text-base">
+                                    www.firewag.com
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Enquiry Form -->
+                <div class="lg:col-span-7">
+                    <div class="glass-card p-8 sm:p-10 rounded-2xl border border-gray-700/60 shadow-2xl">
+                        <h3 class="text-2xl font-bold text-white mb-2">Send an Enquiry</h3>
+                        <p class="text-gray-400 text-sm mb-6">Fill in the details below to generate and forward your enquiry email.</p>
+
+                        <form id="enquiry-form" onsubmit="handleEnquirySubmit(event)" class="space-y-5">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                <div>
+                                    <label class="block text-xs font-semibold text-gray-300 uppercase mb-2">Your Name *</label>
+                                    <input type="text" id="form-name" required placeholder="John Doe" class="w-full px-4 py-3 rounded-xl bg-[#0B0F19] border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-orange-500 transition-colors text-sm">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-gray-300 uppercase mb-2">Phone Number *</label>
+                                    <input type="tel" id="form-phone" required placeholder="+91 XXXXX XXXXX" class="w-full px-4 py-3 rounded-xl bg-[#0B0F19] border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-orange-500 transition-colors text-sm">
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                <div>
+                                    <label class="block text-xs font-semibold text-gray-300 uppercase mb-2">Your Email *</label>
+                                    <input type="email" id="form-email" required placeholder="john@example.com" class="w-full px-4 py-3 rounded-xl bg-[#0B0F19] border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-orange-500 transition-colors text-sm">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-gray-300 uppercase mb-2">Selected Service</label>
+                                    <select id="form-service" class="w-full px-4 py-3 rounded-xl bg-[#0B0F19] border border-gray-700 text-white focus:outline-none focus:border-orange-500 transition-colors text-sm">
+                                        <option value="General Enquiry">General Enquiry</option>
+                                        <option value="Web Application Automation">Web Application Automation</option>
+                                        <option value="Browser Automation">Browser Automation</option>
+                                        <option value="Data Entry Automation">Data Entry Automation</option>
+                                        <option value="Web Scraping & Data Extraction">Web Scraping & Data Extraction</option>
+                                        <option value="API Automation">API Automation</option>
+                                        <option value="Business Process Automation">Business Process Automation</option>
+                                        <option value="Repetitive Task Automation">Repetitive Task Automation</option>
+                                        <option value="Custom Automation Solutions">Custom Automation Solutions</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-300 uppercase mb-2">Project Details / Message *</label>
+                                <textarea id="form-message" rows="4" required placeholder="Describe your automation requirements or process..." class="w-full px-4 py-3 rounded-xl bg-[#0B0F19] border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-orange-500 transition-colors text-sm resize-none"></textarea>
+                            </div>
+
+                            <!-- Form Status Message -->
+                            <div id="form-status" class="hidden p-4 rounded-xl text-sm font-medium"></div>
+
+                            <button type="submit" class="w-full firewag-gradient-btn text-white py-4 rounded-xl font-bold text-base shadow-xl flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-paper-plane"></i>
+                                <span>Send Enquiry via Mail</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-[#070A11] border-t border-gray-800/80 py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div>
+                <a href="#home" class="text-2xl font-extrabold italic firewag-gradient-text">
+                    Firewag
+                </a>
+                <p class="text-gray-500 text-xs mt-1">Automate Your Work. Save Time. Grow Faster.</p>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-6 text-xs text-gray-400">
+                <a href="#home" class="hover:text-white transition-colors">Home</a>
+                <a href="#about" class="hover:text-white transition-colors">About Us</a>
+                <a href="#solutions" class="hover:text-white transition-colors">Solutions</a>
+                <a href="#why-us" class="hover:text-white transition-colors">Why Us</a>
+                <a href="#contact" class="hover:text-white transition-colors">Contact Us</a>
+            </div>
+
+            <div class="text-xs text-gray-500 text-center md:text-right">
+                &copy; <span id="current-year"></span> Firewag. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT FOR LOGIC -->
+    <script>
+        // Set dynamic current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+            } else {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-xmark');
+            }
+        });
+
+        // Close mobile menu when link clicked
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+            });
+        });
+
+        // Helper function to preselect service from cards or buttons
+        function preselectService(serviceName) {
+            const selectEl = document.getElementById('form-service');
+            if (selectEl) {
+                selectEl.value = serviceName;
+            }
+        }
+
+        // Form Submission Logic: Constructs mailto link to target email
+        function handleEnquirySubmit(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('form-name').value.trim();
+            const phone = document.getElementById('form-phone').value.trim();
+            const email = document.getElementById('form-email').value.trim();
+            const service = document.getElementById('form-service').value;
+            const message = document.getElementById('form-message').value.trim();
+            const statusDiv = document.getElementById('form-status');
+
+            // Format Mail details
+            const targetEmail = "Himmat.automated@gmail.com";
+            const subject = encodeURIComponent(`New Automation Enquiry: ${service} - ${name}`);
+            
+            const bodyContent = 
+`Hello Firewag Team,
+
+You have received a new enquiry from your website www.firewag.com.
+
+--- ENQUIRY DETAILS ---
+Name: ${name}
+Phone: ${phone}
+Email: ${email}
+Requested Service: ${service}
+
+--- MESSAGE / DETAILS ---
+${message}
+
+---
+Sent via Firewag Web Automation Portal`;
+
+            const body = encodeURIComponent(bodyContent);
+
+            // Construct mailto URL
+            const mailtoUrl = `mailto:${targetEmail}?subject=${subject}&body=${body}`;
+
+            // Show status alert
+            statusDiv.className = "p-4 rounded-xl text-sm font-medium bg-emerald-900/40 border border-emerald-500/50 text-emerald-300 block";
+            statusDiv.innerHTML = `<i class="fa-solid fa-circle-check mr-2"></i> Opening your mail app... If it doesn't open automatically, <a href="${mailtoUrl}" class="underline font-bold">click here to send email directly to Himmat.automated@gmail.com</a>.`;
+
+            // Trigger mail client opening
+            window.location.href = mailtoUrl;
+        }
+    </script>
+</body>
+</html>
